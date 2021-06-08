@@ -1,12 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('meta')
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
 	<meta name="description" content="{{$product_detail->summary}}">
 	<meta property="og:url" content="{{route('product-detail',$product_detail->slug)}}">
 	<meta property="og:type" content="article">
@@ -20,7 +14,7 @@
 @section('main-content')
 
 		<!-- Breadcrumbs -->
-		<div class="breadcrumbs">
+		<section  class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
@@ -34,7 +28,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- End Breadcrumbs -->
 				
 		<!-- Shop Single -->

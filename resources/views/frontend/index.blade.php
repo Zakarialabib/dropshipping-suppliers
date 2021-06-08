@@ -2,32 +2,6 @@
 @section('title','DropshippingSupplier || HOME PAGE')
 @section('main-content')
 <!-- Slider Area -->
-<section class="hero-slider">
-    <!-- Single Slider -->
-
-    {{-- <div class="single-slider">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-lg-9 offset-lg-3 col-12">
-                    <div class="text-inner">
-                        <div class="row">
-                            <div class="col-lg-7 col-12">
-                                <div class="hero-text">
-                                    <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-                                    <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-                                    <div class="button">
-                                        <a href="#" class="btn">Shop Now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!--/ End Single Slider -->
-</section>
 @if(count($banners)>0)
     <section id="Gslider" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -62,40 +36,37 @@
 <!--/ End Slider Area -->
 
 <!-- Start Small Banner  -->
-<section class="small-banner section">
-    <div class="container-fluid">
-        <div class="row">
+<section class="">
+    <ul id="banners_grid" class="clearfix">
             @php 
             $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
             @endphp
             @if($category_lists)
                 @foreach($category_lists as $cat)
                     @if($cat->is_parent==1)
-                        <!-- Single Banner  -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-banner">
-                                @if($cat->photo)
-                                    <img src="{{$cat->photo}}" alt="{{$cat->photo}}">
-                                @else
-                                    <img src="https://via.placeholder.com/600x370" alt="#">
-                                @endif
-                                <div class="content">
-                                    <h3>{{$cat->title}}</h3>
-                                        <a href="{{route('product-cat',$cat->slug)}}">Discover Now</a>
-                                </div>
+                    <li>
+                        <a href="{{route('product-cat',$cat->slug)}}" class="img_container">
+                            @if($cat->photo)
+                            <img src="{{$cat->photo}}" data-src="{{$cat->photo}}" alt="{{$cat->title}}" class="lazy">
+                            @else
+                            <img src="{{asset('photos/banners_cat_placeholder.jpg')}}"  alt="{{$cat->title}}" class="lazy">
+                            @endif
+                            <div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                                <h3>{{$cat->title}}</h3>
+                                <div><span class="btn_1">{{__('Shop Now')}}</span></div>
                             </div>
-                        </div>
+                        </a>
+                    </li>
                     @endif
                     <!-- /End Single Banner  -->
                 @endforeach
             @endif
-        </div>
-    </div>
+        </ul>
 </section>
 <!-- End Small Banner -->
 
 <!-- Start Product Area -->
-<div class="product-area section">
+<section class="product-area section">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -138,7 +109,6 @@
                                             <a href="{{route('product-detail',$product->slug)}}">
                                                 @php 
                                                     $photo=explode(',',$product->photo);
-                                                // dd($photo);
                                                 @endphp
                                                 <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                 <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
@@ -186,11 +156,9 @@
                 </div>
             </div>
         </div>
-</div>
+</section>
 <!-- End Product Area -->
-{{-- @php
-    $featured=DB::table('products')->where('is_featured',1)->where('status','active')->orderBy('id','DESC')->limit(1)->get();
-@endphp --}}
+
 <!-- Start Midium Banner  -->
 <section class="midium-banner">
     <div class="container">
@@ -220,7 +188,7 @@
 <!-- End Midium Banner -->
 
 <!-- Start Most Popular -->
-<div class="product-area most-popular section">
+<section class="product-area most-popular section">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -274,7 +242,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 <!-- End Most Popular Area -->
 
 <!-- Start Shop Home List  -->
@@ -376,20 +344,19 @@
         <div class="row">
             @if($posts)
                 @foreach($posts as $post)
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Start Single Blog  -->
-                        <div class="shop-single-blog">
-                          <a href="{{route('blog.detail',$post->slug)}}" class="{{$post->title}}">
-                            <img src="{{$post->photo}}" alt="{{$post->title}}">
-                          </a>
-                            <div class="content">
-                                <p class="date">{{$post->created_at->format('d M , Y. D')}}</p>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="{{$post->title}}">{{$post->title}}</a>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">{{('Continue Reading')}}</a>
-                            </div>
-                        </div>
-                        <!-- End Single Blog  -->
-                    </div>
+				<div class="col-lg-6">
+					<a class="box_news" href="{{route('blog.detail',$post->slug)}}">
+						<figure>
+							<img src="{{$post->photo}}" data-src="{{$post->photo}}" alt="{{$post->title}}" width="400" height="266" class="lazy">
+							<figcaption>{{$post->created_at->format('d M')}}</figcaption>
+						</figure>
+						<ul>
+							<li>{{$post->created_at->format('d M , Y. D')}}</li>
+						</ul>
+						<h4>{{$post->title}}</h4>
+						<p>{!! \Illuminate\Support\Str::words($post->description, 50,'....')  !!}</p>
+					</a>
+				</div>
                 @endforeach
             @endif
             

@@ -2,7 +2,7 @@
 @section('title','Cart Page')
 @section('main-content')
 	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
+	<section  class="breadcrumbs">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -15,11 +15,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="shopping-cart section">
+	<section class="shopping-cart section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -128,7 +128,7 @@
 												Shipping {{session('shipping_price')}}
 												@if(count(Helper::shipping())>0 && Helper::cartCount()>0)
 													<div class="form-select">
-														<select name="shipping" class="nice-select">
+														<select name="shipping" class="select2">
 															<option value="">Select</option>
 															@foreach(Helper::shipping() as $shipping)
 															<option value="{{$shipping->id}}" class="shippingOption" data-price="{{$shipping->price}}">{{$shipping->type}}: {{$shipping->price}}DH</option>
@@ -171,7 +171,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!--/ End Shopping Cart -->
 			
 	<!-- Start Shop Services Area  -->
@@ -318,7 +318,7 @@
 			height: 30px;
 			width: 100%;
 		}
-		.form-select .nice-select {
+		.form-select .select2 {
 			border: none;
 			border-radius: 0px;
 			height: 40px;
@@ -334,17 +334,15 @@
 			background:#F7941D !important;
 			color:white !important;
 		}
-		.form-select .nice-select::after {
+		.form-select .select2::after {
 			top: 14px;
 		}
 	</style>
 @endpush
 @push('scripts')
-	<script src="{{asset('frontend/js/nice-select/js/jquery.nice-select.min.js')}}"></script>
-	<script src="{{ asset('frontend/js/select2/js/select2.min.js') }}"></script>
+
 	<script>
 		$(document).ready(function() { $("select.select2").select2(); });
-  		$('select.nice-select').niceSelect();
 	</script>
 	<script>
 		$(document).ready(function(){
