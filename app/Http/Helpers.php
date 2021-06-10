@@ -131,9 +131,6 @@ class Helper{
             if($user_id=="") $user_id=auth()->user()->id;
             return Wishlist::with('product')->where('user_id',$user_id)->where('cart_id',null)->get();
         }
-        else{
-            return 0;
-        }
     }
     public static function totalWishlistPrice($user_id=''){
         if(Auth::check()){
