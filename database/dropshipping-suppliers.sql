@@ -73,13 +73,14 @@ CREATE TABLE IF NOT EXISTS `carts` (
   CONSTRAINT `carts_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE SET NULL,
   CONSTRAINT `carts_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
   CONSTRAINT `carts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.carts : ~1 rows (environ)
+-- Listage des données de la table e-shop.carts : ~2 rows (environ)
 DELETE FROM `carts`;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
 INSERT INTO `carts` (`id`, `product_id`, `order_id`, `user_id`, `price`, `status`, `quantity`, `amount`, `created_at`, `updated_at`) VALUES
-	(1, 1, 1, 2, 50.05, 'new', 1, 50.05, '2021-05-26 14:41:10', '2021-05-26 14:48:08');
+	(1, 1, 1, 2, 50.05, 'new', 1, 50.05, '2021-05-26 14:41:10', '2021-05-26 14:48:08'),
+	(2, 1, NULL, 1, 50.05, 'new', 1, 50.05, '2021-06-07 15:25:10', '2021-06-07 15:25:10');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 
 -- Listage de la structure de la table e-shop. categories
@@ -160,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.languages : ~2 rows (environ)
+-- Listage des données de la table e-shop.languages : ~3 rows (environ)
 DELETE FROM `languages`;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
 INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
@@ -184,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.messages : ~1 rows (environ)
+-- Listage des données de la table e-shop.messages : ~0 rows (environ)
 DELETE FROM `messages`;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
@@ -197,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.migrations : ~20 rows (environ)
+-- Listage des données de la table e-shop.migrations : ~21 rows (environ)
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -238,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.notifications : ~0 rows (environ)
+-- Listage des données de la table e-shop.notifications : ~2 rows (environ)
 DELETE FROM `notifications`;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
@@ -292,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.password_resets : ~0 rows (environ)
+-- Listage des données de la table e-shop.password_resets : ~1 rows (environ)
 DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
@@ -377,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `post_comments` (
   CONSTRAINT `post_comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.post_comments : ~7 rows (environ)
+-- Listage des données de la table e-shop.post_comments : ~8 rows (environ)
 DELETE FROM `post_comments`;
 /*!40000 ALTER TABLE `post_comments` DISABLE KEYS */;
 INSERT INTO `post_comments` (`id`, `user_id`, `post_id`, `comment`, `status`, `replied_comment`, `parent_id`, `created_at`, `updated_at`) VALUES
@@ -443,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   CONSTRAINT `products_child_cat_id_foreign` FOREIGN KEY (`child_cat_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.products : ~0 rows (environ)
+-- Listage des données de la table e-shop.products : ~1 rows (environ)
 DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `title`, `slug`, `summary`, `description`, `photo`, `stock`, `size`, `condition`, `status`, `price`, `discount`, `is_featured`, `cat_id`, `child_cat_id`, `brand_id`, `created_at`, `updated_at`) VALUES
@@ -487,7 +488,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.settings : ~0 rows (environ)
+-- Listage des données de la table e-shop.settings : ~1 rows (environ)
 DELETE FROM `settings`;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `description`, `short_des`, `logo`, `photo`, `address`, `phone`, `email`, `created_at`, `updated_at`) VALUES
@@ -505,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `shippings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table e-shop.shippings : ~0 rows (environ)
+-- Listage des données de la table e-shop.shippings : ~1 rows (environ)
 DELETE FROM `shippings`;
 /*!40000 ALTER TABLE `shippings` DISABLE KEYS */;
 INSERT INTO `shippings` (`id`, `type`, `price`, `status`, `created_at`, `updated_at`) VALUES
