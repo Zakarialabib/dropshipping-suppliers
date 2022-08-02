@@ -51,7 +51,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer social">
 							<div class="collapse dont-collapse-sm" id="collapse_4">
-							<h4>Get In Tuch</h4>
+							<h4>{{ __('Get In Touch')}}</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
@@ -63,7 +63,7 @@
 							<!-- End Single Widget -->
 								
 								<div class="follow_us">
-									<h5>Follow Us</h5>
+									<h5>{{ __('Follow Us')}}</h5>
 									<ul>
 										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/twitter_icon.svg')}}" alt="" class="lazy"></a></li>
 										<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('photos/facebook_icon.svg')}}" alt="" class="lazy"></a></li>

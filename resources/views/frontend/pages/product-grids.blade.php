@@ -94,10 +94,9 @@
                                         </ul> --}}
                                     </div>
                                     <!--/ End Shop By Price -->
-                                <!-- Single Widget -->
+                                {{-- <!-- Single Widget -->
                                 <div class="single-widget recent-post">
                                     <h3 class="title">{{ __('Recent post')}}</h3>
-                                    {{-- {{dd($recent_products)}} --}}
                                     @foreach($recent_products as $product)
                                         <!-- Single Post -->
                                         @php 
@@ -119,7 +118,7 @@
                                         <!-- End Single Post -->
                                     @endforeach
                                 </div>
-                                <!--/ End Single Widget -->
+                                <!--/ End Single Widget --> --}}
                                 <!-- Single Widget -->
                                 <div class="single-widget category">
                                     <h3 class="title">Brands</h3>
